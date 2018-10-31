@@ -13,6 +13,7 @@ Player.prototype.playerTurn = function(roll) {
     if (roll === 1) {
       this.turnTotal = 0
       console.log("it got here");
+      //console log here shows at start of webpage, not at click event!!
     } else {
       this.turnTotal += roll;
       console.log("it got here");
@@ -27,13 +28,13 @@ Player.prototype.playerEnd = function() {
   //if game total <100+ player wins game over!! ??
   }
 
-function randomNumber() {
+function randomNumber(roll) {
   return Math.floor((Math.random() * 6) + 1);
   }
 
-
-var Player1 = new Player("john");
-var Player2 = new Player("allen");
+//example players below
+// var Player1 = new Player("john");
+// var Player2 = new Player("allen");
 
 //var  = new DiceRoll();
 
@@ -41,6 +42,7 @@ var Player2 = new Player("allen");
   $(document).ready(function(){
     $("#play1").click(function() {
       var roll = randomNumber();
+      //need click to be repeatable (each new click generates another number during turn)
     })
 
       $("#result1").text(roll);
