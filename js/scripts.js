@@ -40,8 +40,8 @@ var Player2 = new Player("allen");
   //UI
   $(document).ready(function(){
     $("#play1").click(function() {
-      var roll = Player1.playerTurn();
-    };
+      var roll = randomNumber();
+    })
 
       $("#result1").text(roll);
     })
@@ -63,7 +63,3 @@ var Player2 = new Player("allen");
       Player1.playerEnd();
       $("#turn-total2").text(Player.gameTotal);
     })
-
-
-
-  })
