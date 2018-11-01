@@ -8,16 +8,17 @@ var  diceRoll = function() {
   }
 
   function Player(turn) {
-    this.namePlayer;
-    this.turnTotal = 0,
-    this.gameTotal = 0,
-    this.roll = 0,
-    this.turn = turn
+    this.playerName;
+    this.turnTotal = 0;
+    this.gameTotal = 0;
+    this.roll = 0;
+    this.turn = turn;
   }
+
 Player.prototype.playerTurn = function() {
    if (this.roll === 1) {
      this.turnTotal = 0;
-     alert("You rolled 1, End Turn!")
+     alert(this.playerName + " rolled 1, End Turn!")
    } else {
      this.turnTotal += this.roll;
      }
@@ -27,24 +28,24 @@ Player.prototype.playerTurn = function() {
 Player.prototype.playerHold = function() {
   this.gameTotal += this.turnTotal;
   this.turnTotal = 0;
-  alert("Your turn is over!");
+  alert(this.playerName + "'s" + " turn is over!");
   }
 
 Player.prototype.playerWinner = function() {
   if (this.gameTotal >= 100) {
-    alert("100! You Win!!!");
+    alert("100!" + this.playerName + " Wins!!!");
   }
 }
 
 
 Player.prototype.newGame = function () {
-  this.roll = 0,
-  this.turnTotal = 0,
-  this.gameTotal = 0,
+  this.roll = 0;
+  this.turnTotal = 0;
+  this.gameTotal = 0;
   this.playerName ="";
 }
 
-var clearValues = function(){
+var clearValues = function() {
   $(".player1Name").val("");
   $(".player2Name").val("");
 }
@@ -55,9 +56,9 @@ var clearValues = function(){
 $(document).ready(function() {
 
   $("button#start").click(function(event){
-    player1 = new Player(true);
-    player2 =  new Player(false);
-    $(".player-console").show();
+    playerOne = new Player(true);
+    playerTwo =  new Player(false);
+    $(".game-play").show();
     $(".start-menu").hide();
 
     var player1Name = $(".player1Name").val();
@@ -72,15 +73,15 @@ $(document).ready(function() {
   });
 
   $("button#new-game").click(function(event){
-    $(".player-console").hide();
+    $(".game-play").hide();
     clearValues();
-    player1.newGame();
-    player2.newGame();
-    $("#round-total-1").empty();
-    $("#total-score-1").empty();
+    playerOne.newGame();
+    playerTwo.newGame();
+    $("#turn-total1").empty();
+    $("#game-total1").empty();
     $("#die-roll-1").empty();
-    $("#round-total-2").empty();
-    $("#total-score-2").empty();
+    $("#turn-total2").empty();
+    $("#game-total2").empty();
     $("#die-roll-2").empty();
 
     $(".start-menu").show();
