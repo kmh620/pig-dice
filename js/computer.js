@@ -19,11 +19,11 @@ Computer.prototype.computerRoll = function() {
 }
 
 Computer.prototype.endTurn = function() {
-
   var rollLimit = 2;
-  for (var i = 1; i <= rollLimit; i++) {
+    for (var i = 1; i <= rollLimit; i++) {
     this.gameTotal += this.turnTotal;
     this.turnTotal = 0;
+
     alert("Computer's turn is over!");
   }
     //alert("Computer's turn is over!");
@@ -143,8 +143,10 @@ $(document).ready(function() {
     $("#die-roll-c").text(playerComputer.roll);
     $("#turn-totalc").text(playerComputer.turnTotal);
     if (playerComputer.roll !== 1) {
-      setTimeout(playerComputer.computerRoll(), 5000);
-      setTimeout(playerComputer.endTurn(), 5000);
+      playerComputer.computerRoll();
+      playerComputer.endTurn();
+      //setTimeout(playerComputer.computerRoll(), 5000);
+      //setTimeout(playerComputer.endTurn(), 5000);
       } else {
       alert("Computer rolled a 1")
     }
