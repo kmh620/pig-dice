@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/jquery-3.3.1.js" charset="utf-8"></script>
     <script src="js/scripts.js" charset="utf-8"></script>
+    <script src="js/computer.js" charset="utf-8"></script>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=PT+Serif">
     <title>Pig Dice</title>
@@ -28,9 +29,30 @@
           </div>
         </form>
         <button id="start" class="btn-danger btn">Start Game</button>
+        <button id="computerstart" class="btn-danger btn">Play against Computer</button>
       </div>
     </div>
 
+    <div class="computer-play container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 id="player1Name">Player</h2>
+          <button id="play1" class="btn-danger btn">Play</button>
+          <button id="hold1" class="btn-danger btn">Hold</button>
+          <h3>Dice Roll: <span id="die-roll-p"></span></h3>
+          <p>Turn Total: <span id="turn-totalp"></span></p>
+          <p>Total Score: <span id="game-totalp"></span></p>
+        </div>
+        <div class="col-md-6">
+          <h2 id="computerName">Computer</h2>
+          <h3>Dice Roll: <span id="die-roll-c"></span></h3>
+          <p>Turn Total: <span id="turn-totalc"></span></p>
+          <p>Total Score: <span id="game-totalc"></span></p>
+        </div>
+        <button id="computer-turn" class="btn-success btn">Computer's Turn</button>
+        <button id="reset-game" class="btn-success btn">New Game</button>
+      </div>
+    </div>
 
     <div class="game-play container">
       <div class="row">

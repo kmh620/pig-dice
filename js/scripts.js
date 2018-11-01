@@ -5,15 +5,15 @@ var playerTwo = "";
 
 var  diceRoll = function() {
   return Math.floor((Math.random() * 6) + 1);
-  }
+}
 
-  function Player(turn) {
-    this.playerName;
-    this.turnTotal = 0;
-    this.gameTotal = 0;
-    this.roll = 0;
-    this.turn = turn;
-  }
+function Player(turn) {
+  this.playerName;
+  this.turnTotal = 0;
+  this.gameTotal = 0;
+  this.roll = 0;
+  this.turn = turn;
+}
 
 Player.prototype.playerTurn = function() {
    if (this.roll === 1) {
