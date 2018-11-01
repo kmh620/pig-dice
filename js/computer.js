@@ -8,52 +8,72 @@ function Computer(turn) {
 }
 
 Computer.prototype.computerRoll = function() {
-  var rollLimit = 2;
-  //var dice = [];
-  for (var i = 1; i <= rollLimit; i++) {
-    var die = Math.floor((Math.random() * 6) + 1);
-      this.roll.push(die);
-    }
-}
-
-Computer.prototype.computerTurn = function() {
+  this.roll = Math.floor((Math.random() * 6) + 1);
   if (this.roll === 1) {
-  this.turnTotal = 0;
-  alert("Computer rolled 1, End Turn!")
-} else {
-  this.turnTotal += this.roll;
-  }
+    this.turnTotal = 0;
+    alert("Computer rolled 1")
+ } else {
+    this.turnTotal += this.roll;
+    }
+
 }
 
-Computer.prototype.computerWinner = function() {
-  if (this.gameTotal >= 100) {
-    alert("100! Computer Wins!!!");
-  }
-}
+Computer.prototype.endTurn = function() {
 
-Computer.prototype.computerHold = function() {
   var rollLimit = 2;
   for (var i = 1; i <= rollLimit; i++) {
-
     this.gameTotal += this.turnTotal;
     this.turnTotal = 0;
-    alert("computers turn is over!");
+    alert("Computer's turn is over!");
   }
+    //alert("Computer's turn is over!");
+  if (this.gameTotal >= 100) {
+    alert("100! Computer Wins!!!");
+}
 }
 
-Computer.prototype.newGame = function () {
+
+
+//
+// Computer.prototype.computerTurn = function() {
+//   if (this.roll === 1) {
+//   this.turnTotal = 0;
+//   alert("Computer rolled 1, End Turn!")
+// } else {
+//   this.turnTotal += this.roll;
+//   }
+// }
+//
+// Computer.prototype.computerWinner = function() {
+//   if (this.gameTotal >= 100) {
+//     alert("100! Computer Wins!!!");
+//   }
+// // }
+// //
+// Computer.prototype.computerHold = function() {
+//   var rollLimit = 2;
+//   for (var i = 1; i <= rollLimit; i++) {
+//     this.gameTotal += this.turnTotal;
+//     this.turnTotal = 0;
+//     alert("Computer's turn is over!");
+//   }
+
+
+Computer.prototype.newGame = function() {
   this.roll = 0;
   this.turnTotal = 0;
   this.gameTotal = 0;
   this.playerName ="";
 }
 
+
 // Player Interface
 
-var playerOne = "";
+var playerUser = "";
 var  diceRoll = function() {
   return Math.floor((Math.random() * 6) + 1);
 }
+
 
 function Player(turn) {
   this.turnTotal = 0;
@@ -92,10 +112,12 @@ var clearValues = function() {
   $(".player2Name").val("");
 }
 
+//front End
+
 $(document).ready(function() {
+  var playerUser = new Player(true);
+  var playerComputer = new Computer(true);
   $("#computerstart").click(function(event) {
-    playerOne = new Player(true);
-    playerComputer = new Computer(true);
     $(".computer-play").show();
     $(".start-menu").hide();
   });
@@ -105,7 +127,7 @@ $(document).ready(function() {
     $(".game-play").hide();
     $(".start-menu").show();
     clearValues();
-    playerOne.newGame();
+    playerUser.newGame();
     playerComputer.newGame();
     $("#turn-totalp").empty();
     $("#game-totalp").empty();
@@ -117,26 +139,32 @@ $(document).ready(function() {
 
 
   $("button#computer-turn").click(function(event) {
-    playerComputer.roll = diceRoll();
+    playerComputer.computerRoll();
     $("#die-roll-c").text(playerComputer.roll);
-    playerComputer.computerTurn();
     $("#turn-totalc").text(playerComputer.turnTotal);
+    if (playerComputer.roll !== 1) {
+      setTimeout(playerComputer.computerRoll(), 5000);
+      setTimeout(playerComputer.endTurn(), 5000);
+      } else {
+      alert("Computer rolled a 1")
+    }
+      $("#game-totalc").text(playerComputer.gameTotal);
   });
 
 
-  $("button#play1").click(function(event) {
-    playerOne.roll = diceRoll();
-    $("#die-roll-p").text(playerOne.roll);
-    playerOne.playerTurn();
-    $("#turn-totalp").text(playerOne.turnTotal);
+  $("button#playerPlay").click(function(event) {
+    playerUser.roll = diceRoll();
+    $("#die-roll-p").text(playerUser.roll);
+    playerUser.playerTurn();
+    $("#turn-totalp").text(playerUser.turnTotal);
   });
 
-    $("button#hold1").click(function(event) {
-      playerOne.playerHold();
-      $("#game-totalp").text(playerOne.gameTotal);
+    $("button#playerHold").click(function(event) {
+      playerUser.playerHold();
+      $("#game-totalp").text(playerUser.gameTotal);
       $("#turn-totalp").empty();
       $("#die-roll-p").empty();
-      playerOne.playerWinner();
+      playerUser.playerWinner();
     });
 
 });
