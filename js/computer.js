@@ -6,15 +6,15 @@ function Computer(turn) {
   this.roll = 0;
   this.turn = turn;
 }
-//
-// Computer.prototype.computerRoll = function() {
-//   var rollLimit = 2;
-//   //var dice = [];
-//   for (var i = 1; i <= rollLimit; i++) {
-//     var die = Math.floor((Math.random() * 6) + 1);
-//       this.roll.push(die);
-//     }
-// }
+
+Computer.prototype.computerRoll = function() {
+  var rollLimit = 2;
+  //var dice = [];
+  for (var i = 1; i <= rollLimit; i++) {
+    var die = Math.floor((Math.random() * 6) + 1);
+      this.roll.push(die);
+    }
+}
 
 Computer.prototype.computerTurn = function() {
   if (this.roll === 1) {
@@ -34,6 +34,7 @@ Computer.prototype.computerWinner = function() {
 Computer.prototype.computerHold = function() {
   var rollLimit = 2;
   for (var i = 1; i <= rollLimit; i++) {
+
     this.gameTotal += this.turnTotal;
     this.turnTotal = 0;
     alert("computers turn is over!");
