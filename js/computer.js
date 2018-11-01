@@ -11,11 +11,9 @@ Computer.prototype.computerRoll = function() {
   this.roll = Math.floor((Math.random() * 6) + 1);
   if (this.roll === 1) {
     this.turnTotal = 0;
-    alert("Computer rolled 1")
  } else {
     this.turnTotal += this.roll;
     }
-
 }
 
 Computer.prototype.endTurn = function() {
@@ -23,13 +21,10 @@ Computer.prototype.endTurn = function() {
     for (var i = 1; i <= rollLimit; i++) {
     this.gameTotal += this.turnTotal;
     this.turnTotal = 0;
-
-    alert("Computer's turn is over!");
   }
-    //alert("Computer's turn is over!");
   if (this.gameTotal >= 100) {
     alert("100! Computer Wins!!!");
-}
+  }
 }
 
 Computer.prototype.newGame = function() {
@@ -45,7 +40,6 @@ var playerUser = "";
 var  diceRoll = function() {
   return Math.floor((Math.random() * 6) + 1);
 }
-
 
 function Player(turn) {
   this.turnTotal = 0;
@@ -76,13 +70,10 @@ Player.prototype.playerWinner = function() {
   }
 }
 
-
-// 
-//
-// var clearValues = function() {
-//   $(".player1Name").val("");
-//   $(".player2Name").val("");
-// }
+var clearValues = function() {
+  $(".player1Name").val("");
+  $(".player2Name").val("");
+}
 
 //front End
 
@@ -117,12 +108,12 @@ $(document).ready(function() {
     if (playerComputer.roll !== 1) {
       playerComputer.computerRoll();
       playerComputer.endTurn();
+        alert("Computer's turn is over!");
     } else {
         alert("Computer rolled a 1")
       }
     $("#game-totalc").text(playerComputer.gameTotal);
   });
-
 
   $("button#playerPlay").click(function(event) {
     playerUser.roll = diceRoll();

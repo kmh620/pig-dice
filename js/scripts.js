@@ -24,7 +24,6 @@ Player.prototype.playerTurn = function() {
      }
  }
 
-
 Player.prototype.playerHold = function() {
   this.gameTotal += this.turnTotal;
   this.turnTotal = 0;
@@ -37,7 +36,6 @@ Player.prototype.playerWinner = function() {
   }
 }
 
-
 Player.prototype.newGame = function () {
   this.roll = 0;
   this.turnTotal = 0;
@@ -49,8 +47,6 @@ var clearValues = function() {
   $(".player1Name").val("");
   $(".player2Name").val("");
 }
-
-
 
 //UI
 $(document).ready(function() {
