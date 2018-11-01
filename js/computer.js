@@ -32,40 +32,12 @@ Computer.prototype.endTurn = function() {
 }
 }
 
-
-
-//
-// Computer.prototype.computerTurn = function() {
-//   if (this.roll === 1) {
-//   this.turnTotal = 0;
-//   alert("Computer rolled 1, End Turn!")
-// } else {
-//   this.turnTotal += this.roll;
-//   }
-// }
-//
-// Computer.prototype.computerWinner = function() {
-//   if (this.gameTotal >= 100) {
-//     alert("100! Computer Wins!!!");
-//   }
-// // }
-// //
-// Computer.prototype.computerHold = function() {
-//   var rollLimit = 2;
-//   for (var i = 1; i <= rollLimit; i++) {
-//     this.gameTotal += this.turnTotal;
-//     this.turnTotal = 0;
-//     alert("Computer's turn is over!");
-//   }
-
-
 Computer.prototype.newGame = function() {
   this.roll = 0;
   this.turnTotal = 0;
   this.gameTotal = 0;
   this.playerName ="";
 }
-
 
 // Player Interface
 
@@ -105,12 +77,12 @@ Player.prototype.playerWinner = function() {
 }
 
 
-
-
-var clearValues = function() {
-  $(".player1Name").val("");
-  $(".player2Name").val("");
-}
+// 
+//
+// var clearValues = function() {
+//   $(".player1Name").val("");
+//   $(".player2Name").val("");
+// }
 
 //front End
 
@@ -145,12 +117,10 @@ $(document).ready(function() {
     if (playerComputer.roll !== 1) {
       playerComputer.computerRoll();
       playerComputer.endTurn();
-      //setTimeout(playerComputer.computerRoll(), 5000);
-      //setTimeout(playerComputer.endTurn(), 5000);
-      } else {
-      alert("Computer rolled a 1")
-    }
-      $("#game-totalc").text(playerComputer.gameTotal);
+    } else {
+        alert("Computer rolled a 1")
+      }
+    $("#game-totalc").text(playerComputer.gameTotal);
   });
 
 
